@@ -11,7 +11,11 @@ export async function POST(request: NextRequest) {
     const reqBody = await request.json();
     const { email, password } = reqBody;
 
+    // console.log("request body: ", reqBody);
+
     const user = await User.findOne({ email });
+
+    console.log("User from database: ", user);
 
     if (!user) {
       return NextResponse.json(
@@ -39,13 +43,10 @@ export async function POST(request: NextRequest) {
       expiresIn: "1d",
     });
 
-    const response = NextResponse.json(
-      {
-        message: "Logged In successfully",
-        success: true,
-      },
-      { status: 204 }
-    );
+    const response = NextResponse.json({
+      message: "Logged In successfully",
+      success: true,
+    });
 
     response.cookies.set("token", token, {
       httpOnly: true,
