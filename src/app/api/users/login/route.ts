@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
 
     const user = await User.findOne({ email });
 
-    console.log("User from database: ", user);
+    // console.log("User from database: ", user);
 
     if (!user) {
       return NextResponse.json(
