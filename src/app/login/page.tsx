@@ -32,6 +32,16 @@ export default function LoginPage() {
     }
   };
 
+  const onForgot = async () => {
+    try {
+      const response = await axios.post("/api/users/forgotpassword");
+      console.log("Forgot password successful : ", response);
+      router.push("/resetpassword");
+    } catch (error: any) {
+      console.log("Error from forgot password: ", error.message);
+    }
+  };
+
   React.useEffect(() => {
     if (user.email.length > 0 && user.password.length > 0) {
       setDisableButton(false);
@@ -80,20 +90,29 @@ export default function LoginPage() {
             onChange={(e) => setUser({ ...user, password: e.target.value })}
           />
         </span>
-        <span className="flex flex-col items-center gap-2 w-[60%]">
+        <span className="flex flex-col items-center gap-4 w-[80%]">
           <button
             onClick={onLogin}
             disabled={disableButton}
-            className="w-[60%] bg-red-300 rounded-lg p-1.5 mt-2 cursor-pointer text-slate-100 text-base font-semibold transition hover:bg-red-500 hover:ring-1 hover:ring-slate-100"
+            className="w-[50%] bg-red-300 rounded-lg p-1.5 mt-2 cursor-pointer text-slate-100 text-base font-semibold transition hover:bg-red-500 hover:ring-1 hover:ring-slate-100"
           >
             {loading ? "Processing" : "Login"}
           </button>
-          <Link
-            href="/signup"
-            className="text-transparent bg-gradient-to-t from-cyan-300 to-slate-100 bg-clip-text font-medium transition-all hover:underline hover:bg-gradient-to-t hover:from-cyan-400 hover:to-slate-300 hover:bg-clip-text"
-          >
-            Visit Sign up page
-          </Link>
+          <span className="w-full flex items-center justify-around">
+            <button
+              onClick={onForgot}
+              className="text-transparent bg-gradient-to-t from-cyan-300 to-slate-100 bg-clip-text font-medium transition-all hover:underline hover:bg-gradient-to-t hover:from-cyan-400 hover:to-slate-300 hover:bg-clip-text"
+            >
+              Forgot password
+            </button>
+            <span className="h-4 w-[1px] bg-slate-200/70"></span>
+            <Link
+              href="/signup"
+              className="text-transparent bg-gradient-to-t from-cyan-300 to-slate-100 bg-clip-text font-medium transition-all hover:underline hover:bg-gradient-to-t hover:from-cyan-400 hover:to-slate-300 hover:bg-clip-text"
+            >
+              Visit Sign up page
+            </Link>
+          </span>
         </span>
       </div>
     </div>
