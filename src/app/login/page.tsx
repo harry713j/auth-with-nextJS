@@ -44,7 +44,7 @@ export default function LoginPage() {
     <div className="flex min-h-screen items-center justify-center p-24 bg-gradient-to-t from-red-400 to-pink-400">
       <div
         className="flex flex-col gap-3 items-center w-[40%] bg-gradient-to-t from-red-400 to-pink-400 
-      border-4 border-slate-100 rounded-xl px-2 py-8 shadow-md"
+      border-4 border-indigo-200 rounded-xl px-2 py-8 shadow-md"
       >
         <h1 className="text-4xl font-medium text-slate-200 mb-4">Login</h1>
 
