@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Ubuntu_Mono } from "next/font/google";
 import "./globals.css";
+import { VerificationContextProvider } from "@/contexts/VerificationContext";
 
 const mono = Ubuntu_Mono({ weight: ["400"], subsets: ["cyrillic"] });
 
@@ -16,7 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={mono.className}>{children}</body>
+      <body className={mono.className}>
+        <VerificationContextProvider>{children}</VerificationContextProvider>
+      </body>
     </html>
   );
 }

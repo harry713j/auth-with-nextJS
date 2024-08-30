@@ -8,7 +8,10 @@ export function middleware(request: NextRequest) {
     path === "/" ||
     path === "/signup" ||
     path === "/login" ||
-    path === "/verifyemail";
+    path === "/verifyemail" ||
+    path === "/forgotpassword" ||
+    path === "verifytoken" ||
+    path === "resetpassword";
 
   const token = request.cookies.get("token");
 
@@ -23,5 +26,14 @@ export function middleware(request: NextRequest) {
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: ["/", "/profile", "/login", "/signup", "/verifyemail"],
+  matcher: [
+    "/",
+    "/profile",
+    "/login",
+    "/signup",
+    "/verifyemail",
+    "/verifytoken",
+    "/forgotpassword",
+    "/resetpassword",
+  ],
 };

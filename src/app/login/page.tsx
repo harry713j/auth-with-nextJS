@@ -23,22 +23,12 @@ export default function LoginPage() {
     try {
       setLoading(true);
       const response = await axios.post("/api/users/login", user);
-      console.log("Response from sign up (success) : ", response);
+      console.log("Response from login (success) : ", response);
       // redirect to login page
       router.push("/profile");
     } catch (error: any) {
       console.log("Error: ", error.message);
       toast.error("Sign up Failed", { position: "top-center" });
-    }
-  };
-
-  const onForgot = async () => {
-    try {
-      const response = await axios.post("/api/users/forgotpassword");
-      console.log("Forgot password successful : ", response);
-      router.push("/resetpassword");
-    } catch (error: any) {
-      console.log("Error from forgot password: ", error.message);
     }
   };
 
@@ -94,17 +84,17 @@ export default function LoginPage() {
           <button
             onClick={onLogin}
             disabled={disableButton}
-            className="w-[50%] bg-red-300 rounded-lg p-1.5 mt-2 cursor-pointer text-slate-100 text-base font-semibold transition hover:bg-red-500 hover:ring-1 hover:ring-slate-100"
+            className="w-[50%] bg-red-300 disabled:bg-red-200 disabled:hover:ring-transparent rounded-lg p-1.5 mt-2 cursor-pointer text-slate-100 text-base font-semibold transition hover:bg-red-500 hover:ring-1 hover:ring-slate-100"
           >
             {loading ? "Processing" : "Login"}
           </button>
           <span className="w-full flex items-center justify-around">
-            <button
-              onClick={onForgot}
+            <Link
+              href={`/forgotpassword`}
               className="text-transparent bg-gradient-to-t from-cyan-300 to-slate-100 bg-clip-text font-medium transition-all hover:underline hover:bg-gradient-to-t hover:from-cyan-400 hover:to-slate-300 hover:bg-clip-text"
             >
               Forgot password
-            </button>
+            </Link>
             <span className="h-4 w-[1px] bg-slate-200/70"></span>
             <Link
               href="/signup"

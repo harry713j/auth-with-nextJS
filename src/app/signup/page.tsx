@@ -105,7 +105,7 @@ export default function SignUpPage() {
           <button
             onClick={onSignUp}
             disabled={disableButton}
-            className="w-[60%] bg-red-300 rounded-lg p-1.5 mt-2 cursor-pointer text-slate-100 text-base font-semibold transition hover:bg-red-500 hover:ring-1 hover:ring-slate-100"
+            className="w-[60%] bg-red-300 disabled:bg-red-200 disabled:hover:ring-transparent rounded-lg p-1.5 mt-2 cursor-pointer text-slate-100 text-base font-semibold transition hover:bg-red-500 hover:ring-1 hover:ring-slate-100"
           >
             {loading ? "Processing" : "Sign up"}
           </button>
