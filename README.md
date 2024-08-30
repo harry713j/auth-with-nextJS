@@ -3,5 +3,5 @@
 ### FEATURES
 
 - Authentication
-- Verification with Mail
+- Verify email with Mail
 - Forgot password with Mail
